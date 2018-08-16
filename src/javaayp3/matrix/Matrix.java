@@ -24,8 +24,8 @@ public class Matrix {
     final int ROWS = data.length;
     final int COLS = data[0].length;
     int[][] tmp = new int[ROWS][COLS];
-    for( int row = 0; row < ROWS ; ++row) {
-      for( int col = 0 ; col < COLS ; ++col) {
+    for (int row = 0; row < ROWS; ++row) {
+      for (int col = 0; col < COLS; ++col) {
         tmp[ROWS - 1 - row][COLS - 1 - col] = data[row][col];
       }
     }
