@@ -10,15 +10,14 @@ abstract class Property implements Constants {
   private int state; // good , regular , bad
   private int commissionForSale;
 
-  Property(int code, String district, String home, int surface, int antiquity, int state,
-      int commissionForSale) {
-    this.code = code;
-    this.district = district;
-    this.home = home;
-    this.surface = surface;
-    this.antiquity = antiquity;
-    this.state = state;
-    this.commissionForSale = commissionForSale;
+  Property(Builder<?> builder) {
+    this.code = builder.code;
+    this.district = builder.district;
+    this.home = builder.home;
+    this.surface = builder.surface;
+    this.antiquity = builder.antiquity;
+    this.state = builder.state;
+    this.commissionForSale = builder.commissionForSale;
   }
 
   double amountOfSalesCommission() {
@@ -81,6 +80,56 @@ abstract class Property implements Constants {
 
   void setCommissionForSale(int commissionForSale) {
     this.commissionForSale = commissionForSale;
+  }
+
+  abstract static class Builder<T extends Builder<T>> {
+
+    private final int code;
+    private String district;
+    private String home;
+    private int surface;
+    private int antiquity;
+    private int state; // good , regular , bad
+    private int commissionForSale;
+
+    public Builder(int code) {
+      this.code = code;
+    }
+
+    T district(String district) {
+      this.district = district;
+      return self();
+    }
+
+    T home(String home) {
+      this.home = home;
+      return self();
+    }
+
+    T surface(int surface) {
+      this.surface = surface;
+      return self();
+    }
+
+    T antiquity(int antiquity) {
+      this.antiquity = antiquity;
+      return self();
+    }
+
+    T state(int state) {
+      this.state = state;
+      return self();
+    }
+
+    T comissionForSale(int commission) {
+      this.commissionForSale = commission;
+      return self();
+    }
+
+    abstract T self();
+
+    abstract Property build();
+
   }
 
   void printAttributes() {

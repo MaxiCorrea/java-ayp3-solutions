@@ -4,16 +4,41 @@ class Terrain extends Property {
 
   private boolean inCorner;
 
-  Terrain(int code, String district, String home, int surface, int antiquity, int state,
-      int commissionForSale, boolean inCorner) {
-    super(code, district, home, surface, antiquity, state, commissionForSale);
-    this.inCorner = inCorner;
+  private Terrain(Builder builder) {
+    super(builder);
+    this.inCorner = builder.inCorner;
   }
-
+  
   boolean inCorner() {
     return inCorner;
   }
 
+  static class Builder extends Property.Builder<Builder> {
+
+    private boolean inCorner;
+    
+    public Builder(int code) {
+      super(code);
+    }
+
+    Builder inCorner( boolean inCorner) {
+      this.inCorner = inCorner;
+      return self();
+    }
+    
+    @Override
+    Builder self() {
+      return this;
+    }
+
+    @Override
+    Terrain build() {
+      return new Terrain(this);
+    }
+    
+  }
+  
+  
   @Override
   double salePrice() {
     double coefficient = 1;

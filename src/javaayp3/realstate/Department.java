@@ -5,11 +5,10 @@ class Department extends Property {
   private boolean hasGarage;
   private boolean hasStorage;
 
-  Department(int code, String district, String home, int surface, int antiquity, int state,
-      int commissionForSale, boolean hasGarage, boolean hasStorage) {
-    super(code, district, home, surface, antiquity, state, commissionForSale);
-    this.hasGarage = hasGarage;
-    this.hasStorage = hasStorage;
+  private Department(Builder builder) {
+    super(builder);
+    this.hasGarage = builder.hasGarage;
+    this.hasStorage = builder.hasStorage;
   }
 
   boolean hasGarage() {
@@ -19,6 +18,38 @@ class Department extends Property {
   boolean hasStorage() {
     return hasStorage;
   }
+
+  static class Builder extends Property.Builder<Builder> {
+
+    private boolean hasGarage;
+    private boolean hasStorage;
+
+    public Builder(int code) {
+      super(code);
+    }
+
+    Builder hasGarage(boolean hasGarage) {
+      this.hasGarage = hasGarage;
+      return self();
+    }
+
+    Builder hasStorage(boolean hasStorage) {
+      this.hasStorage = hasStorage;
+      return self();
+    }
+
+    @Override
+    Builder self() {
+      return this;
+    }
+
+    @Override
+    Department build() {
+      return new Department(this);
+    }
+
+  }
+
 
   @Override
   double salePrice() {
@@ -59,5 +90,5 @@ class Department extends Property {
     System.out.println("Cochera : " + (hasGarage ? "Si" : "No"));
     System.out.println("Baulera : " + (hasStorage ? "Si" : "No"));
   }
-  
+
 }

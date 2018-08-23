@@ -3,8 +3,35 @@ package javaayp3.realstate;
 public class RealEstateTester {
 
   public static void main(String[] args) {
-    Property house1 = new House(1, "Moreno", "Cuartel", 123, 10, 2, 34, 123, false, false, false, true);
-    Property house2 = new House(2, "Moreno", "Cuartel", 234, 12, 3, 55, 344, true, false, false, false);
+    
+    House house1 =  new House.Builder(1)
+        .district("Moreno")
+        .home("Cuartel")
+        .surface(123)
+        .antiquity(10)
+        .state(2)
+        .comissionForSale(34)
+        .surfaceTerrain(123)
+        .hasGarage(false)
+        .hasPool(false)
+        .hasQuincho(false)
+        .inCorner(true)
+        .build();
+    
+    House house2 =  new House.Builder(2)
+        .district("Moreno")
+        .home("Cuartel")
+        .surface(234)
+        .antiquity(12)
+        .state(3)
+        .comissionForSale(55)
+        .surfaceTerrain(344)
+        .hasGarage(true)
+        .hasPool(false)
+        .hasQuincho(false)
+        .inCorner(false)
+        .build();
+    
     RealEstate estate = new RealEstate();
     estate.comparePricesAndPrint(house1 , house2);
   }

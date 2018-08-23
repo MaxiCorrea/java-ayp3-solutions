@@ -8,15 +8,13 @@ class House extends Property {
   private boolean hasQuincho;
   private boolean inCorner;
 
-  House(int code, String district, String home, int surface, int antiquity, int state,
-      int commissionForSale, int surfaceTerrain, boolean hasGarage, boolean hasPool,
-      boolean hasQuincho, boolean inCorner) {
-    super(code, district, home, surface, antiquity, state, commissionForSale);
-    this.surfaceTerrain = surfaceTerrain;
-    this.hasGarage = hasGarage;
-    this.hasPool = hasPool;
-    this.hasQuincho = hasQuincho;
-    this.inCorner = inCorner;
+  private House(Builder builder) {
+    super(builder);
+    this.surfaceTerrain = builder.surfaceTerrain;
+    this.hasGarage = builder.hasGarage;
+    this.hasPool = builder.hasPool;
+    this.hasQuincho = builder.hasQuincho;
+    this.inCorner = builder.inCorner;
   }
 
   int getSurfaceTerrain() {
@@ -38,6 +36,56 @@ class House extends Property {
   boolean inCorner() {
     return inCorner;
   }
+
+  static class Builder extends Property.Builder<Builder> {
+
+    private int surfaceTerrain;
+    private boolean hasGarage;
+    private boolean hasPool;
+    private boolean hasQuincho;
+    private boolean inCorner;
+
+    public Builder(int code) {
+      super(code);
+    }
+
+    Builder surfaceTerrain(int surfaceTerrain) {
+      this.surfaceTerrain = surfaceTerrain;
+      return self();
+    }
+
+    Builder hasGarage(boolean hasGarage) {
+      this.hasGarage = hasGarage;
+      return self();
+    }
+
+    Builder hasPool(boolean hasPool) {
+      this.hasPool = hasPool;
+      return self();
+    }
+
+    Builder hasQuincho(boolean hasQuincho) {
+      this.hasQuincho = hasQuincho;
+      return self();
+    }
+
+    Builder inCorner(boolean inCorner) {
+      this.inCorner = inCorner;
+      return self();
+    }
+
+    @Override
+    Builder self() {
+      return this;
+    }
+
+    @Override
+    House build() {
+      return new House(this);
+    }
+
+  }
+
 
   @Override
   double salePrice() {
@@ -91,5 +139,5 @@ class House extends Property {
     System.out.println("Quincho : " + (hasQuincho() ? "Si" : "No"));
     System.out.println("En Esquina : " + (inCorner() ? "Si" : "No"));
   }
-  
+
 }
