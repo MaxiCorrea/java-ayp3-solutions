@@ -1,10 +1,10 @@
 package javaayp3.realstate;
 
-class Ground extends Property {
+class Terrain extends Property {
 
   private boolean inCorner;
 
-  Ground(int code, String district, String home, int surface, int antiquity, int state,
+  Terrain(int code, String district, String home, int surface, int antiquity, int state,
       int commissionForSale, boolean inCorner) {
     super(code, district, home, surface, antiquity, state, commissionForSale);
     this.inCorner = inCorner;
