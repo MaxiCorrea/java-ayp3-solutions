@@ -43,13 +43,13 @@ class Terrain extends Property {
   double salePrice() {
     double coefficient = 1;
     switch (getState()) {
-      case 1:
+      case GOOD:
         coefficient = GOOD_TERRAIN_COEFFICIENT;
         break;
-      case 2:
+      case REGULAR:
         coefficient = REGULAR_TERRAIN_COEFFICIENT;
         break;
-      case 3:
+      case BAD:
         coefficient = BAD_TERRAIN_COEFFICIENT;
         break;
     }

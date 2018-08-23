@@ -7,7 +7,7 @@ abstract class Property implements Constants {
   private String home;
   private int surface;
   private int antiquity;
-  private int state; // good , regular , bad
+  private State state;
   private int commissionForSale;
 
   Property(Builder<?> builder) {
@@ -66,11 +66,11 @@ abstract class Property implements Constants {
     this.antiquity = antiquity;
   }
 
-  int getState() {
+  State getState() {
     return state;
   }
 
-  void setState(int state) {
+  void setState(State state) {
     this.state = state;
   }
 
@@ -89,7 +89,7 @@ abstract class Property implements Constants {
     private String home;
     private int surface;
     private int antiquity;
-    private int state; // good , regular , bad
+    private State state;
     private int commissionForSale;
 
     public Builder(int code) {
@@ -116,7 +116,7 @@ abstract class Property implements Constants {
       return self();
     }
 
-    T state(int state) {
+    T state(State state) {
       this.state = state;
       return self();
     }
@@ -138,18 +138,7 @@ abstract class Property implements Constants {
     System.out.println("Domicilio : " + home);
     System.out.println("Superficie : " + surface);
     System.out.println("Antiguedad : " + antiquity);
-    System.out.print("Estado general : ");
-    switch (state) {
-      case 1:
-        System.out.println("Bueno");
-        break;
-      case 2:
-        System.out.println("Regular");
-        break;
-      case 3:
-        System.out.println("Malo");
-        break;
-    }
+    System.out.println("Estado general : " + state);
     System.out.println("Comision vendedor : " + commissionForSale);
   }
 

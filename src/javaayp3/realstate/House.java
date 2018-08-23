@@ -92,13 +92,13 @@ class House extends Property {
     double coefficientHouse = 1;
     double coefficientTerrain = 1;
     switch (getState()) {
-      case 1:
+      case GOOD:
         coefficientHouse = GOOD_HOUSE_COEFFICIENT;
         break;
-      case 2:
+      case REGULAR:
         coefficientHouse = REGULAR_HOUSE_COEFFICIENT;
         break;
-      case 3:
+      case BAD:
         coefficientHouse = BAD_HOUSE_COEFFICIENT;
         break;
     }
