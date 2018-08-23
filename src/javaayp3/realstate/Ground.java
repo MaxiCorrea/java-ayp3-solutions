@@ -19,21 +19,21 @@ class Ground extends Property {
     double coefficient = 1;
     switch (getState()) {
       case 1:
-        coefficient = Good_terrain_coefficient;
+        coefficient = GOOD_TERRAIN_COEFFICIENT;
         break;
       case 2:
-        coefficient = regular_terrain_coefficient;
+        coefficient = REGULAR_TERRAIN_COEFFICIENT;
         break;
       case 3:
-        coefficient = bad_terrain_coefficient;
+        coefficient = BAD_TERRAIN_COEFFICIENT;
         break;
     }
 
     if (inCorner()) {
-      coefficient *= Ground_terrain_coefficient;
+      coefficient *= GROUND_TERRAIN_COEFFICIENT;
     }
 
-    return getSurface() * basicValueBaldioLand * coefficient;
+    return getSurface() * BASIC_VALUE_BALDIO_LAND * coefficient;
   }
 
   @Override

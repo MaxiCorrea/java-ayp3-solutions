@@ -25,33 +25,33 @@ class Department extends Property {
     double coefficient = 1;
     switch (getState()) {
       case 1:
-        coefficient = goodDepartmentCoefficient;
+        coefficient = GOOD_DEPARTMENT_COEFFICIENT;
         break;
       case 2:
-        coefficient = regularDepartmentCoefficient;
+        coefficient = REGULAR_DEPARTMENT_COEFFICIENT;
         break;
       case 3:
-        coefficient = badDepartmentCoefficient;
+        coefficient = BAD_DEPARTMENT_COEFFICIENT;
         break;
     }
 
     if (getAntiquity() > 10) {
-      coefficient *= goodDepartmentCoefficient;
+      coefficient *= GOOD_DEPARTMENT_COEFFICIENT;
     } else if (getAntiquity() < 25) {
-      coefficient *= regularDepartmentCoefficient;
+      coefficient *= REGULAR_DEPARTMENT_COEFFICIENT;
     } else {
-      coefficient *= badDepartmentCoefficient;
+      coefficient *= BAD_DEPARTMENT_COEFFICIENT;
     }
 
     if (hasGarage) {
-      coefficient *= parkingGarageCoefficient;
+      coefficient *= PARCKING_GARAGE_COEFFICIENT;
     }
 
     if (hasStorage) {
-      coefficient *= coefficientDepartmentBaulera;
+      coefficient *= BAULERA_DEPARTMENT_COEFFICIENT;
     }
 
-    return getSurface() * basicValueDepartment * coefficient;
+    return getSurface() * BASIC_VALUE_DEPARTMENT * coefficient;
   }
 
   public void printAttributes() {

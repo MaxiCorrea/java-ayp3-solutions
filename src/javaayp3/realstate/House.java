@@ -45,42 +45,42 @@ class House extends Property {
     double coefficientTerrain = 1;
     switch (getState()) {
       case 1:
-        coefficientHouse = goodHouseCoefficient;
+        coefficientHouse = GOOD_HOUSE_COEFFICIENT;
         break;
       case 2:
-        coefficientHouse = regularHouseCoefficient;
+        coefficientHouse = REGULAR_HOUSE_COEFFICIENT;
         break;
       case 3:
-        coefficientHouse = badHouseCoefficient;
+        coefficientHouse = BAD_HOUSE_COEFFICIENT;
         break;
     }
 
     if (getAntiquity() < 15) {
-      coefficientHouse *= goodHouseCoefficient;
+      coefficientHouse *= GOOD_HOUSE_COEFFICIENT;
     } else if (getAntiquity() < 35) {
-      coefficientHouse *= regularHouseCoefficient;
+      coefficientHouse *= REGULAR_HOUSE_COEFFICIENT;
     } else {
-      coefficientHouse *= badHouseCoefficient;
+      coefficientHouse *= BAD_HOUSE_COEFFICIENT;
     }
 
     if (hasGarage()) {
-      coefficientHouse *= coefficient_house_garage;
+      coefficientHouse *= GARAGE_HOUSE_COEFFICIENT;
     }
 
     if (hasPool()) {
-      coefficientHouse *= coefficient_house_pool;
+      coefficientHouse *= POOL_HOUSE_COEFFICIENT;
     }
 
     if (hasQuincho()) {
-      coefficientHouse += coefficient_house_quicho;
+      coefficientHouse *= QUINCHO_HOUSE_COEFFICIENT;
     }
 
     if (inCorner()) {
-      coefficientTerrain += Ground_terrain_coefficient;
+      coefficientTerrain *= GROUND_TERRAIN_COEFFICIENT;
     }
 
-    return getSurface() * basicHouseValue * coefficientHouse
-        + getSurfaceTerrain() * basicValueBuiltGround * coefficientTerrain;
+    return getSurface() * BASIC_VALUE_HOUSE * coefficientHouse
+        + getSurfaceTerrain() * BASIC_VALUE_BUILD_GROUND * coefficientTerrain;
   }
 
   @Override
