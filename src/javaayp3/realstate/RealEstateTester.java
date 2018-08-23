@@ -1,5 +1,8 @@
 package javaayp3.realstate;
 
+import javaayp3.realstate.model.House;
+import javaayp3.realstate.model.State;
+
 public class RealEstateTester {
 
   public static void main(String[] args) {

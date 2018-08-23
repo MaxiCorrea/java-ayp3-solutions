@@ -1,4 +1,4 @@
-package javaayp3.realstate;
+package javaayp3.realstate.model;
 
 public enum State {
 

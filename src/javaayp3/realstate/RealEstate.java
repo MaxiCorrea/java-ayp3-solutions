@@ -1,13 +1,16 @@
 package javaayp3.realstate;
 
-class RealEstate {
+import javaayp3.realstate.model.Property;
+import javaayp3.realstate.views.RealEstatePrinter;
 
-  void comparePricesAndPrint(Property property1, Property property2) {
+public class RealEstate {
+  
+  public void comparePricesAndPrint(Property property1, Property property2) {
     if (property1.salePrice() > property2.salePrice()) {
-      property1.printAttributes();
+      new RealEstatePrinter(property1).print();
     } else {
-      property2.printAttributes();
+      new RealEstatePrinter(property2).print();
     }
   }
-  
+    
 }

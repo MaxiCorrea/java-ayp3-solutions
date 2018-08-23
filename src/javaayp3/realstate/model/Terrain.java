@@ -1,6 +1,6 @@
-package javaayp3.realstate;
+package javaayp3.realstate.model;
 
-class Terrain extends Property {
+public class Terrain extends Property {
 
   private boolean inCorner;
 
@@ -8,39 +8,39 @@ class Terrain extends Property {
     super(builder);
     this.inCorner = builder.inCorner;
   }
-  
-  boolean inCorner() {
+
+  public boolean inCorner() {
     return inCorner;
   }
 
-  static class Builder extends Property.Builder<Builder> {
+  public static class Builder extends Property.Builder<Builder> {
 
     private boolean inCorner;
-    
+
     public Builder(int code) {
       super(code);
     }
 
-    Builder inCorner( boolean inCorner) {
+    public Builder inCorner(boolean inCorner) {
       this.inCorner = inCorner;
       return self();
     }
-    
+
     @Override
     Builder self() {
       return this;
     }
 
     @Override
-    Terrain build() {
+    public Terrain build() {
       return new Terrain(this);
     }
-    
+
   }
-  
-  
+
+
   @Override
-  double salePrice() {
+  public double salePrice() {
     double coefficient = 1;
     switch (getState()) {
       case GOOD:
@@ -59,12 +59,6 @@ class Terrain extends Property {
     }
 
     return getSurface() * BASIC_VALUE_BALDIO_LAND * coefficient;
-  }
-
-  @Override
-  void printAttributes() {
-    super.printAttributes();
-    System.out.println("En esquina : " + (inCorner() ? "Si" : "No"));
   }
 
 }

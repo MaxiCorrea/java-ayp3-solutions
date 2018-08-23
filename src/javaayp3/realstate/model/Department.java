@@ -1,6 +1,6 @@
-package javaayp3.realstate;
+package javaayp3.realstate.model;
 
-class Department extends Property {
+public class Department extends Property {
 
   private boolean hasGarage;
   private boolean hasStorage;
@@ -11,15 +11,15 @@ class Department extends Property {
     this.hasStorage = builder.hasStorage;
   }
 
-  boolean hasGarage() {
+  public boolean hasGarage() {
     return hasGarage;
   }
 
-  boolean hasStorage() {
+  public boolean hasStorage() {
     return hasStorage;
   }
 
-  static class Builder extends Property.Builder<Builder> {
+  public static class Builder extends Property.Builder<Builder> {
 
     private boolean hasGarage;
     private boolean hasStorage;
@@ -28,12 +28,12 @@ class Department extends Property {
       super(code);
     }
 
-    Builder hasGarage(boolean hasGarage) {
+    public Builder hasGarage(boolean hasGarage) {
       this.hasGarage = hasGarage;
       return self();
     }
 
-    Builder hasStorage(boolean hasStorage) {
+    public Builder hasStorage(boolean hasStorage) {
       this.hasStorage = hasStorage;
       return self();
     }
@@ -44,7 +44,7 @@ class Department extends Property {
     }
 
     @Override
-    Department build() {
+    public Department build() {
       return new Department(this);
     }
 
@@ -52,7 +52,7 @@ class Department extends Property {
 
 
   @Override
-  double salePrice() {
+  public double salePrice() {
     double coefficient = 1;
     switch (getState()) {
       case GOOD:
@@ -83,12 +83,6 @@ class Department extends Property {
     }
 
     return getSurface() * BASIC_VALUE_DEPARTMENT * coefficient;
-  }
-
-  public void printAttributes() {
-    super.printAttributes();
-    System.out.println("Cochera : " + (hasGarage ? "Si" : "No"));
-    System.out.println("Baulera : " + (hasStorage ? "Si" : "No"));
   }
 
 }

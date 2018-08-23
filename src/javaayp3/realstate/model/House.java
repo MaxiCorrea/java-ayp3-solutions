@@ -1,6 +1,6 @@
-package javaayp3.realstate;
+package javaayp3.realstate.model;
 
-class House extends Property {
+public class House extends Property {
 
   private int surfaceTerrain;
   private boolean hasGarage;
@@ -17,27 +17,27 @@ class House extends Property {
     this.inCorner = builder.inCorner;
   }
 
-  int getSurfaceTerrain() {
+  public int getSurfaceTerrain() {
     return surfaceTerrain;
   }
 
-  boolean hasGarage() {
+  public boolean hasGarage() {
     return hasGarage;
   }
 
-  boolean hasPool() {
+  public boolean hasPool() {
     return hasPool;
   }
 
-  boolean hasQuincho() {
+  public boolean hasQuincho() {
     return hasQuincho;
   }
 
-  boolean inCorner() {
+  public boolean inCorner() {
     return inCorner;
   }
 
-  static class Builder extends Property.Builder<Builder> {
+  public static class Builder extends Property.Builder<Builder> {
 
     private int surfaceTerrain;
     private boolean hasGarage;
@@ -49,27 +49,27 @@ class House extends Property {
       super(code);
     }
 
-    Builder surfaceTerrain(int surfaceTerrain) {
+    public Builder surfaceTerrain(int surfaceTerrain) {
       this.surfaceTerrain = surfaceTerrain;
       return self();
     }
 
-    Builder hasGarage(boolean hasGarage) {
+    public Builder hasGarage(boolean hasGarage) {
       this.hasGarage = hasGarage;
       return self();
     }
 
-    Builder hasPool(boolean hasPool) {
+    public Builder hasPool(boolean hasPool) {
       this.hasPool = hasPool;
       return self();
     }
 
-    Builder hasQuincho(boolean hasQuincho) {
+    public Builder hasQuincho(boolean hasQuincho) {
       this.hasQuincho = hasQuincho;
       return self();
     }
 
-    Builder inCorner(boolean inCorner) {
+    public Builder inCorner(boolean inCorner) {
       this.inCorner = inCorner;
       return self();
     }
@@ -80,7 +80,7 @@ class House extends Property {
     }
 
     @Override
-    House build() {
+    public House build() {
       return new House(this);
     }
 
@@ -88,7 +88,7 @@ class House extends Property {
 
 
   @Override
-  double salePrice() {
+  public double salePrice() {
     double coefficientHouse = 1;
     double coefficientTerrain = 1;
     switch (getState()) {
@@ -129,15 +129,6 @@ class House extends Property {
 
     return getSurface() * BASIC_VALUE_HOUSE * coefficientHouse
         + getSurfaceTerrain() * BASIC_VALUE_BUILD_GROUND * coefficientTerrain;
-  }
-
-  @Override
-  void printAttributes() {
-    super.printAttributes();
-    System.out.println("Garage : " + (hasGarage() ? "Si" : "No"));
-    System.out.println("Pileta : " + (hasPool() ? "Si" : "No"));
-    System.out.println("Quincho : " + (hasQuincho() ? "Si" : "No"));
-    System.out.println("En Esquina : " + (inCorner() ? "Si" : "No"));
   }
 
 }
