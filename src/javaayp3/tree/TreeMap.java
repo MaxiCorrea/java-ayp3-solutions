@@ -1,14 +1,14 @@
 package javaayp3.tree;
 
-class TreeMap<E extends Comparable<E>> {
+class TreeMap<K extends Comparable<V>, V> {
 
-  private TreeMapNode<E> topNode;
+  private TreeMapNode<K,V> topNode;
 
   TreeMap() {
     topNode = null;
   }
 
-  void add(Comparable<E> key, E value) {
+  void add(K key, V value) {
     if (topNode == null) {
       topNode = new TreeMapNode<>(key, value);
     } else {
@@ -16,7 +16,7 @@ class TreeMap<E extends Comparable<E>> {
     }
   }
 
-  E get(Comparable<E> key) {
+  V get(K key) {
     if (topNode == null) {
       return null;
     } else {
