@@ -1,22 +1,23 @@
 package javaayp3.tree;
 
-class TreeMap<K extends Comparable<V>, V> {
+@SuppressWarnings({"rawtypes", "unchecked"})
+class TreeMap<E> {
 
-  private TreeMapNode<K,V> topNode;
+  private TreeMapNode<E> topNode;
 
   TreeMap() {
     topNode = null;
   }
 
-  void add(K key, V value) {
+  void add(Comparable<Object> key, E value) {
     if (topNode == null) {
-      topNode = new TreeMapNode<>(key, value);
+      topNode = new TreeMapNode(key, value);
     } else {
       topNode.add(key, value);
     }
   }
 
-  V get(K key) {
+  Object get(Comparable<Object> key) {
     if (topNode == null) {
       return null;
     } else {
